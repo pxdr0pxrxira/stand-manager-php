@@ -1,0 +1,1482 @@
+/**
+ * ============================================
+ * Stand Automóvel - Estilos (Paulimane Style)
+ * ============================================
+ * Design moderno inspirado em Paulimane
+ * Cor principal: Laranja (#F26522)
+ */
+
+/* ============================================
+   CSS Variables (Design Tokens)
+   ============================================ */
+:root {
+    /* Cores Principais - Estilo Paulimane */
+    --primary-color: #003366;
+    --primary-dark: #002244;
+    --primary-light: #FF8A50;
+
+    /* Cores de Texto */
+    --text-dark: #1a1a1a;
+    --text-gray: #6b7280;
+    --text-light: #9ca3af;
+
+    /* Backgrounds */
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+
+    /* Sombras */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Transições */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Colors */
+    --text-dark: #f3f4f6;
+    --text-gray: #9ca3af;
+    --text-light: #6b7280;
+
+    /* Backgrounds */
+    --bg-light: #111827;
+    /* Dark Gray Background */
+    --white: #1f2937;
+    /* Lighter Dark Gray for Cards */
+
+    /* Shadows - adjusted for dark mode */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+
+    /* Brighter Blue for Dark Mode */
+    --primary-color: #60a5fa;
+    --primary-dark: #3b82f6;
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-light);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1336px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ============================================
+   Navbar - Estilo Paulimane
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    z-index: 1000;
+    transition: var(--transition);
+    padding: 0;
+}
+
+.navbar.scrolled {
+    background: var(--white) !important;
+    box-shadow: var(--shadow);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    transition: var(--transition);
+}
+
+.navbar.scrolled .nav-wrapper {
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-weight: 700;
+    color: #ffffff;
+    transition: var(--transition);
+    transition: var(--transition);
+}
+
+.logo i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.navbar.scrolled .logo {
+    color: var(--text-dark) !important;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.navbar.scrolled .nav-link {
+    color: var(--text-dark) !important;
+    text-shadow: none;
+}
+
+.nav-btn {
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.navbar.scrolled .nav-btn {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.nav-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.navbar.scrolled .nav-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    height: 3px;
+    background: #ffffff;
+    transition: var(--transition);
+    border-radius: 3px;
+}
+
+.navbar.scrolled .hamburger span {
+    background: var(--text-dark);
+}
+
+/* ============================================
+   Hero Section - Full Screen
+   ============================================ */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.hero-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 0 2rem;
+    margin-left: 8%;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+}
+
+.hero-title .text-primary {
+    color: var(--primary-color);
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    font-weight: 400;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    transition: var(--transition);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 51, 102, 0.4);
+}
+
+.hero-cta-btn-outline {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.hero-cta-btn-outline:hover {
+    background: #ffffff;
+    color: var(--primary-color);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator a {
+    color: var(--white);
+    font-size: 2rem;
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.scroll-indicator a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* ============================================
+   Section Styles
+   ============================================ */
+section {
+    padding: 5rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 0 auto 1rem;
+    border-radius: 2px;
+}
+
+.section-description {
+    font-size: 1.125rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   Stats Section
+   ============================================ */
+.stats-section {
+    background: var(--white);
+    padding: 4rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+/* ============================================
+   Car Cards - Estilo Paulimane
+   ============================================ */
+.cars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.car-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.car-card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.car-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.car-card:hover .car-card-image img {
+    transform: scale(1.1);
+}
+
+.car-card-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.car-card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.car-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--text-dark);
+}
+
+.car-card-version {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.car-card-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.car-card-spec {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    background: var(--bg-light);
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+}
+
+.car-card-spec i {
+    color: var(--primary-color);
+}
+
+.car-card-price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bg-light);
+}
+
+.car-card-price small {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-weight: 400;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* Card Link Button */
+.btn-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.85rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.btn-card:hover {
+    background: var(--primary-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-card i {
+    transition: var(--transition);
+}
+
+.btn-card:hover i {
+    transform: translateX(5px);
+}
+
+/* ============================================
+   Buttons - Estilo Paulimane
+   ============================================ */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Badges Garantia/IVA */
+.car-card-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.badge-garantia {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.badge-iva {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(234, 179, 8, 0.15);
+    color: #ca8a04;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Tabs Styles (Stock Page) */
+.stock-tabs {
+    background: var(--white);
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+}
+
+.tabs-wrapper {
+    display: flex;
+    gap: 0;
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+    background: rgba(0, 51, 102, 0.05);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-count {
+    background: rgba(107, 114, 128, 0.15);
+    color: var(--text-gray);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.tab-btn.active .tab-count {
+    background: rgba(0, 51, 102, 0.15);
+    color: var(--primary-color);
+}
+
+/* Sold Card Styles */
+.car-sold {
+    opacity: 0.85;
+}
+
+.car-reserved {
+    opacity: 0.9;
+}
+
+.sold-watermark,
+.reserved-watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sold-watermark {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.reserved-watermark {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sold-watermark span,
+.reserved-watermark span {
+    color: white;
+    font-weight: 800;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    transform: rotate(-15deg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+}
+
+.sold-watermark span {
+    background: rgba(34, 197, 94, 0.95);
+}
+
+.reserved-watermark span {
+    background: rgba(234, 179, 8, 0.95);
+}
+
+/* Card Gallery Overlay & Nav */
+.card-gallery {
+    position: relative;
+}
+
+.card-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #1a1a1a;
+    opacity: 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+}
+
+.card-gallery:hover .card-nav {
+    opacity: 1;
+}
+
+.card-nav:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.card-nav-prev {
+    left: 0.5rem;
+}
+
+.card-nav-next {
+    right: 0.5rem;
+}
+
+.card-gallery-dots {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.35rem;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.card-gallery:hover .card-gallery-dots {
+    opacity: 1;
+}
+
+.card-gallery-dots .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.2s ease;
+}
+
+.card-gallery-dots .dot.active {
+    background: white;
+    width: 18px;
+    border-radius: 3px;
+}
+
+.gallery-main-img {
+    transition: opacity 0.2s ease;
+}
+
+/* WhatsApp Button */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #25d366;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transition);
+}
+
+.btn-whatsapp:hover {
+    background: #20ba5a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* ============================================
+   Filters Section - Catálogo
+   ============================================ */
+.page-header {
+    padding-top: 110px;
+    padding-top: 110px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #ffffff;
+    padding-bottom: 4rem;
+    text-align: center;
+}
+
+[data-theme="dark"] .page-header {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+}
+
+.page-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.page-subtitle {
+    font-size: 1.15rem;
+    opacity: 0.9;
+}
+
+.filters-section {
+    padding: 2rem 0;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.filters-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.filter-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    text-transform: uppercase;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.75rem 1.25rem;
+    border: 2px solid var(--bg-light);
+    background: var(--white);
+    color: var(--text-dark);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: var(--transition);
+    min-width: 160px;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    background: var(--white);
+    color: var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   Car Details Page
+   ============================================ */
+.car-details-section {
+    padding-top: 120px;
+    padding-bottom: 4rem;
+}
+
+.car-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.car-details-image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.car-details-image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.car-details-info h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.car-details-version {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+.car-details-price {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.car-details-price .price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.car-details-price .iva {
+    color: var(--text-gray);
+    font-size: 1rem;
+}
+
+.specs-quick {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.spec-box {
+    text-align: center;
+    padding: 1.25rem;
+    background: var(--bg-light);
+    border-radius: 12px;
+}
+
+.spec-box i {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.spec-box .label {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    display: block;
+}
+
+.spec-box .value {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.car-details-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Specs Table */
+.specs-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.specs-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.specs-card h3 i {
+    color: var(--primary-color);
+}
+
+.specs-table {
+    width: 100%;
+}
+
+.specs-table tr {
+    border-bottom: 1px solid var(--bg-light);
+}
+
+.specs-table th,
+.specs-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.specs-table th {
+    font-weight: 600;
+    color: var(--text-gray);
+    width: 40%;
+}
+
+.specs-table td {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* ============================================
+   Footer - Estilo Paulimane
+   ============================================ */
+.footer {
+    background: #1a1a2e;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 4rem 0 1.5rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.footer-logo i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+}
+
+.footer-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: #ffffff;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    padding-left: 0.5rem;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+}
+
+.footer-contact-item i {
+    color: var(--primary-color);
+    margin-top: 0.25rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   Back to Top Button
+   ============================================ */
+.back-to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    z-index: 1100;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   No Image Placeholder
+   ============================================ */
+.no-image {
+    background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #757575;
+    font-size: 3rem;
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mb-4 {
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+.delay-4 {
+    animation-delay: 0.4s;
+}
+
+/* ============================================
+   Admin Panel Styles
+   ============================================ */
+.admin-navbar {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.admin-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: var(--bg-light);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.admin-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--bg-light);
+}
+
+.admin-table tr:hover {
+    background: var(--bg-light);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-content {
+        margin-left: 5%;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .car-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .specs-quick {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 90px);
+        background: var(--white);
+        flex-direction: column;
+        padding: 2rem;
+        transition: var(--transition);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu.active .nav-link {
+        color: var(--text-dark);
+        text-shadow: none;
+    }
+
+    .nav-menu.active .nav-btn {
+        background: var(--primary-color);
+        color: var(--white);
+    }
+
+    .hero-section {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 0 60px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-content {
+        margin-left: 0;
+        padding: 0 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .cars-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .filters-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        width: 100%;
+    }
+
+    .car-details-image img {
+        height: 300px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+    }
+
+    .hero-cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .specs-quick {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
