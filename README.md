@@ -32,20 +32,20 @@ Uma solução web completa e moderna para gestão de concessionários automóvei
 
 ## 🛠️ Tecnologias Utilizadas
 
-*   **Backend:** PHP 8+ (Estrutura MVC simplificada)
+*   **Backend:** PHP 8+ 
 *   **Base de Dados:** MySQL
 *   **Frontend:**
-    *   HTML5 / CSS3 (Design Responsivo/Mobile-first)
-    *   JavaScript (Vanilla)
+    *   HTML5 / CSS3
+    *   JavaScript
     *   Bootstrap 5 (Base de layout)
     *   Bootstrap Icons
 
 ## 🚀 Como Instalar
 
 ### 1. Requisitos do Sistema
-*   Servidor Web (Apache/Nginx)
+*   Servidor Web
 *   PHP >= 8.0
-*   MySQL/MariaDB
+*   MySQL
 
 ### 2. Configuração
 1.  **Base de Dados:**
@@ -90,4 +90,4 @@ Uma solução web completa e moderna para gestão de concessionários automóvei
 *   Validação de inputs e sanitize de dados.
 
 ---
-Desenvolvido com ❤️ por [Seu Nome/Empresa]
+Desenvolvido com ❤️ por Pedro Pereira
