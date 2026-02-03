@@ -33,7 +33,7 @@ Uma solução web completa e moderna para gestão de concessionários automóvei
 ## 🛠️ Tecnologias Utilizadas
 
 *   **Backend:** PHP 8+ (Estrutura MVC simplificada)
-*   **Base de Dados:** MySQL / MariaDB
+*   **Base de Dados:** MySQL
 *   **Frontend:**
     *   HTML5 / CSS3 (Design Responsivo/Mobile-first)
     *   JavaScript (Vanilla)
